@@ -33,3 +33,9 @@ end;
 @ fix-typo
 
 @ decrease-debit-limit.sql
+
+-- @ queries.sql
+
+-- @ exec-plan-regular.sql
+
+-- @ exec-plan-as-of.sql
