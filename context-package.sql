@@ -1,3 +1,5 @@
+connect fba_user/fba_user@&db
+
 create or replace package tq84_fba_ctx_pkg authid definer as
    procedure ctx_val(nam in varchar2, val in varchar2);
 end tq84_fba_ctx_pkg;

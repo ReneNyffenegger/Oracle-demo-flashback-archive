@@ -1,3 +1,5 @@
+connect fba_user/fba_user@&db
+
 create or replace package tq84_fba_demo_hlp authid definer as
 
 --  procedure capture(nam varchar2);

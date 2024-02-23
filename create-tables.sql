@@ -1,4 +1,4 @@
-connect rene/rene
+connect fba_user/fba_user@&db
 
 create table tq84_config_opt (
    nam  varchar2(20),
@@ -6,7 +6,7 @@ create table tq84_config_opt (
    --
    constraint tq84_config_pk primary key (id)
 )
--- flashback archive tq84_fba -- Commented because using 'application'
+-- flashback archive tq84_fba -- Commented because tables are added using 'application'
 ;
 
 create table tq84_config_val (
@@ -16,5 +16,5 @@ create table tq84_config_val (
    constraint tq84_config_val_pk primary key (opt_id),
    constraint tq84_config_val_fk foreign key (opt_id) references tq84_config_opt
 )
--- flashback archive tq84_fba -- Commented because using 'application'
+-- flashback archive tq84_fba -- Commented because tables are added using 'application'
 ;

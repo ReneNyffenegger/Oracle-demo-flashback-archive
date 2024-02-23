@@ -1,4 +1,9 @@
+@ variables
+
 @ cleanup
+
+@ create-administrator.sql
+@ create-user.sql
 
 @ create-flashback-archive
 
@@ -10,17 +15,19 @@
 
 @ enable-application
 
+@ wait-20-secs
+
 @ context-package
 
 @ demo-hlp-package
 
-begin
---
--- WAIT 15 SECONDS!!!
---
-   dbms_session.sleep(15);   
-end;
-/
+-- begin
+-- --
+-- -- WAIT 15 SECONDS!!!
+-- --
+--    dbms_session.sleep(15);
+-- end;
+-- /
 
 @ set-context-level
 
