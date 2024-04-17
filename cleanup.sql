@@ -1,4 +1,3 @@
--- connect / as sysdba
 connect fba_admin/fba_admin@&db
 
 begin

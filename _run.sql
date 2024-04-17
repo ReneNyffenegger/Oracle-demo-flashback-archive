@@ -1,25 +1,51 @@
-@ variables
+script
+Java.type("oracle.dbtools.raptor.newscriptrunner.CommandRegistry").addForAllStmtsListener(
+   Java.extend(Java.type("oracle.dbtools.raptor.newscriptrunner.CommandListener"),
+   {
+      handleEvent: function(conn, ctx, cmd) {
 
-@ cleanup
+         var stmt = cmd.getSql().trim();
+         if ( stmt.startsWith('runscript') ) {
 
-@ create-administrator.sql
-@ create-user.sql
+             var scriptName = stmt.substring("runscript".length).trim();
+             print("Running \x1b[32m" + scriptName + "\x1b[0m");
+             sqlcl.setStmt('@ ' + scriptName); sqlcl.run();
 
-@ create-flashback-archive
+             return true;
+         }
 
-@ create-tables
+         return false;
+      },
 
-@ register-application
+      beginEvent: function(conn, ctx, cmd) {},
+      endEvent :  function(conn, ctx, cmd) {}
 
-@ add-tables-to-application
+   }).class
+);
+/
 
-@ enable-application
+runscript variables.sql
 
-@ wait-20-secs
+runscript cleanup.sql
 
-@ context-package
+runscript create-administrator.sql
+runscript create-user.sql
 
-@ demo-hlp-package
+runscript create-flashback-archive.sql
+
+runscript create-tables.sql
+
+runscript register-application.sql
+
+runscript add-tables-to-application.sql
+
+runscript enable-application.sql
+
+runscript wait-20-secs.sql
+
+runscript context-package.sql
+
+runscript demo-hlp-package.sql
 
 -- begin
 -- --
@@ -29,20 +55,22 @@
 -- end;
 -- /
 
-@ set-context-level
+runscript set-context-level.sql
 
-@ set-ctx-val-1
+runscript set-ctx-val-1
 
-@ init-insert
+runscript init-insert.sql
 
-@ set-ctx-val-2
+runscript set-ctx-val-2.sql
 
-@ fix-typo
+runscript fix-typo.sql
 
-@ decrease-debit-limit.sql
+runscript decrease-debit-limit.sql
 
--- @ queries.sql
+-- runscript queries.sql
 
--- @ exec-plan-regular.sql
+-- runscript exec-plan-regular.sql
 
--- @ exec-plan-as-of.sql
+-- runscript exec-plan-as-of.sql
+
+exit
