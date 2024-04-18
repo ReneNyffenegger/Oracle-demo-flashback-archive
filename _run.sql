@@ -1,51 +1,28 @@
-script
-Java.type("oracle.dbtools.raptor.newscriptrunner.CommandRegistry").addForAllStmtsListener(
-   Java.extend(Java.type("oracle.dbtools.raptor.newscriptrunner.CommandListener"),
-   {
-      handleEvent: function(conn, ctx, cmd) {
+set parameterpolicy isolate
 
-         var stmt = cmd.getSql().trim();
-         if ( stmt.startsWith('runscript') ) {
+@ _runscript variables.sql
 
-             var scriptName = stmt.substring("runscript".length).trim();
-             print("Running \x1b[32m" + scriptName + "\x1b[0m");
-             sqlcl.setStmt('@ ' + scriptName); sqlcl.run();
+@ _runscript cleanup.sql
 
-             return true;
-         }
+@ _runscript create-administrator.sql
 
-         return false;
-      },
+@ _runscript create-user.sql
 
-      beginEvent: function(conn, ctx, cmd) {},
-      endEvent :  function(conn, ctx, cmd) {}
+@ _runscript create-flashback-archive.sql
 
-   }).class
-);
-/
+@ _runscript create-tables.sql
 
-runscript variables.sql
+@ _runscript register-application.sql
 
-runscript cleanup.sql
+@ _runscript add-tables-to-application.sql
 
-runscript create-administrator.sql
-runscript create-user.sql
+@ _runscript enable-application.sql
 
-runscript create-flashback-archive.sql
+@ _runscript wait-20-secs.sql
 
-runscript create-tables.sql
+@ _runscript context-package.sql
 
-runscript register-application.sql
-
-runscript add-tables-to-application.sql
-
-runscript enable-application.sql
-
-runscript wait-20-secs.sql
-
-runscript context-package.sql
-
-runscript demo-hlp-package.sql
+@ _runscript demo-hlp-package.sql
 
 -- begin
 -- --
@@ -55,17 +32,17 @@ runscript demo-hlp-package.sql
 -- end;
 -- /
 
-runscript set-context-level.sql
+@ _runscript set-context-level.sql
 
-runscript set-ctx-val-1
+@ _runscript set-ctx-val-1
 
-runscript init-insert.sql
+@ _runscript init-insert.sql
 
-runscript set-ctx-val-2.sql
+@ _runscript set-ctx-val-2.sql
 
-runscript fix-typo.sql
+@ _runscript fix-typo.sql
 
-runscript decrease-debit-limit.sql
+@ _runscript decrease-debit-limit.sql
 
 -- runscript queries.sql
 
