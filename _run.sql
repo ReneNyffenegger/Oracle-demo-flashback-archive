@@ -46,10 +46,13 @@ set verify   off
 
 @ _runscript decrease-debit-limit.sql
 
+@ _runscript add-column.sql
+
 @  queries.sql
 
 -- runscript exec-plan-regular.sql
 
 -- runscript exec-plan-as-of.sql
+
 
 exit

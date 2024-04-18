@@ -6,7 +6,7 @@ from
    tq84_config_val val on opt.id = val.opt_id
 ;
 
-@_blue-text "select all versions in tq84_config_opt"
+@_blue-text "select all versions in tq84_config_val"
 
 select
    val.*,
