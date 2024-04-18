@@ -6,6 +6,8 @@ from
    tq84_config_val val on opt.id = val.opt_id
 ;
 
+@_blue-text "select all versions in tq84_config_opt"
+
 select
    val.*,
    val.versions_starttime,
@@ -17,6 +19,8 @@ select
 from
    tq84_config_val versions between scn minvalue and maxvalue val
 ;
+
+@_blue-text "select all versions in tq84_config_opt"
 
 select
    opt.*,
@@ -30,33 +34,42 @@ from
    tq84_config_opt versions between scn  minvalue and maxvalue opt
 ;
 
-select
-   opt.nam,
-   val.val
-from
-   tq84_config_opt as of timestamp tq84_fba_demo_hlp.ts('init') opt                        join
-   tq84_config_val as of timestamp tq84_fba_demo_hlp.ts('init') val on opt.id = val.opt_id
-;
+@_blue-text "select data as of ts_init (&ts_init)"
 
 select
    opt.nam,
    val.val
 from
-   tq84_config_opt as of timestamp tq84_fba_demo_hlp.ts('fix typo') opt                        join
-   tq84_config_val as of timestamp tq84_fba_demo_hlp.ts('fix typo') val on opt.id = val.opt_id
+   tq84_config_opt as of timestamp timestamp '&ts_init'     opt                         join
+   tq84_config_val as of timestamp timestamp '&ts_init'     val on opt.id = val.opt_id
 ;
+
+
+@_blue-text "select data as of ts_fix_typo (&ts_fix_typo)"
 
 select
    opt.nam,
    val.val
 from
-   tq84_config_opt as of timestamp tq84_fba_demo_hlp.ts('Decrease debit limit')  opt                        join
-   tq84_config_val as of timestamp tq84_fba_demo_hlp.ts('Decrease debit limit')  val on opt.id = val.opt_id
+   tq84_config_opt as of timestamp timestamp '&ts_fix_typo' opt                         join
+   tq84_config_val as of timestamp timestamp '&ts_fix_typo' val on opt.id = val.opt_id
 ;
 
+@_blue-text "select data as of ts_decrease_debit_limit (&ts_decrease_debit_limit)"
+
 select
-   val.*,
-   dbms_flashback_archive.get_sys_context(val.versions_xid, 'tq84_fba_ctx','change reason') AS change_reason
+   opt.nam,
+   val.val
 from
-   tq84_config_opt versions between scn minvalue and maxvalue val
+   tq84_config_opt as of timestamp timestamp '&ts_decrease_debit_limit'  opt                         join
+   tq84_config_val as of timestamp timestamp '&ts_decrease_debit_limit'  val on opt.id = val.opt_id
 ;
+
+-- @_blue-text "select change reason context value"
+--
+-- select
+--    val.*,
+--    dbms_flashback_archive.get_sys_context(val.versions_xid, 'tq84_fba_ctx','change reason') AS change_reason
+-- from
+--    tq84_config_opt versions between scn minvalue and maxvalue val
+-- ;

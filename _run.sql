@@ -1,4 +1,6 @@
 set parameterpolicy isolate
+set feedback off
+set verify   off
 
 @ _runscript variables.sql
 
@@ -18,17 +20,17 @@ set parameterpolicy isolate
 
 @ _runscript enable-application.sql
 
-@ _runscript wait-20-secs.sql
+@            wait-n-secs.sql 1
 
 @ _runscript context-package.sql
 
-@ _runscript demo-hlp-package.sql
+-- @ _runscript demo-hlp-package.sql
 
 -- begin
 -- --
 -- -- WAIT 15 SECONDS!!!
 -- --
---    dbms_session.sleep(15);
+--    dbms_session.sleep(25);
 -- end;
 -- /
 
@@ -44,7 +46,7 @@ set parameterpolicy isolate
 
 @ _runscript decrease-debit-limit.sql
 
--- runscript queries.sql
+@  queries.sql
 
 -- runscript exec-plan-regular.sql
 

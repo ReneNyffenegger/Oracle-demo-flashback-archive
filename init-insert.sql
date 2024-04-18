@@ -14,8 +14,7 @@ begin
    insert into tq84_config_val (val, opt_id) values (   15.00, 5);
    insert into tq84_config_val (val, opt_id) values (   35.00, 6);
    insert into tq84_config_val (val, opt_id) values (10000.00, 7);
-
-   tq84_fba_demo_hlp.commit_('init');
--- tq84_fba_demo_hlp.capture('init');
 end;
 /
+
+@ _commit init

@@ -1,3 +1,11 @@
+--
+-- 2024-04-18: The functionality of this package
+--             is replaced by using the _commit.sql script
+--             It is currently left in the repository for
+--             sentimental reasons.
+--
+exit
+
 connect fba_user/fba_user@&db
 
 create or replace package tq84_fba_demo_hlp authid definer as
