@@ -35,7 +35,7 @@ from
 ;
 
 @_blue-text "select data as of ts_init (&ts_init)"
-
+prompt @|cyan,intensity_bold Note the typo Penalyt|@
 select
    opt.nam,
    val.val
@@ -46,6 +46,7 @@ from
 
 
 @_blue-text "select data as of ts_fix_typo (&ts_fix_typo)"
+prompt @|cyan,intensity_bold The typo should be fixed (Penalyt -> Penalty), but Debit Limit is still 2000|@
 
 select
    opt.nam,
@@ -56,6 +57,7 @@ from
 ;
 
 @_blue-text "select data as of ts_decrease_debit_limit (&ts_decrease_debit_limit)"
+prompt @|cyan,intensity_bold Debit Limit is now decreased to 1500|@
 
 select
    opt.nam,

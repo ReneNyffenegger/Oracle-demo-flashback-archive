@@ -32,5 +32,6 @@ begin
 end;
 /
 
+drop tablespace tq84_fba_ts including contents;
 drop user fba_user  cascade;
 drop user fba_admin cascade;

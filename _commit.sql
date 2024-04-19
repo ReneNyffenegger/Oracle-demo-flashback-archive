@@ -14,8 +14,8 @@ from
 set termout on
 
 begin
-   dbms_session.sleep(4);
    commit;
+   dbms_session.sleep(6);
 end;
 /
 

@@ -2,11 +2,13 @@ connect &syspw@&db as sysdba
 
 create user fba_admin
    identified by fba_admin
-   quota unlimited on users;
+   quota unlimited on users
+;
 
 grant
    flashback archive administer,
-   create tablespace,
+-- create tablespace,
+-- drop   tablespace,
    connect
 to
    fba_admin;

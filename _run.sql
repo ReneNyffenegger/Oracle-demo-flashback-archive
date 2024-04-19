@@ -10,6 +10,8 @@ set verify   off
 
 @ _runscript create-user.sql
 
+@ _runscript create-tablespace.sql
+
 @ _runscript create-flashback-archive.sql
 
 @ _runscript create-tables.sql
@@ -25,14 +27,6 @@ set verify   off
 @ _runscript context-package.sql
 
 -- @ _runscript demo-hlp-package.sql
-
--- begin
--- --
--- -- WAIT 15 SECONDS!!!
--- --
---    dbms_session.sleep(25);
--- end;
--- /
 
 @ _runscript set-context-level.sql
 
