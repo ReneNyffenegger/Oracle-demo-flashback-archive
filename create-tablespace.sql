@@ -1,7 +1,3 @@
---     Create tablepsace for the flashback archive
---     Assume db_create_file_dest is set, for example with:
---            alter system set db_create_file_dest = '/opt/oracle/oradata' scope=both;
---
 create tablespace tq84_fba_ts datafile size 4g autoextend off;
 
 --
